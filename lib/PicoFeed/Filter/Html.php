@@ -125,9 +125,8 @@ class Html
 
         $parser = xml_parser_create();
 
-        xml_set_object($parser, $this);
-        xml_set_element_handler($parser, 'startTag', 'endTag');
-        xml_set_character_data_handler($parser, 'dataTag');
+        xml_set_element_handler($parser, [$this, 'startTag'], [$this, 'endTag']);
+        xml_set_character_data_handler($parser, [$this, 'dataTag']);
         xml_parser_set_option($parser, XML_OPTION_CASE_FOLDING, false);
         xml_parse($parser, $this->input, true);
         xml_parser_free($parser);

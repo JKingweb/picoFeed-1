@@ -354,7 +354,7 @@ abstract class Parser implements ParserInterface
      * @param ClientInterface $httpClient
      * @return \PicoFeed\Parser\Parser
      */
-    public function enableContentGrabber($needsRuleFile = false, $scraperCallback = null, ClientInterface $httpClient = null)
+    public function enableContentGrabber($needsRuleFile = false, $scraperCallback = null, ?ClientInterface $httpClient = null)
     {
         $processor = new ScraperProcessor($this->config, $httpClient);
 

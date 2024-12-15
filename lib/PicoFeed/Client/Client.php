@@ -215,7 +215,7 @@ class Client
         return $this->httpClient->get($this->url, $opts);
     }
 
-    public function __construct(ClientInterface $httpClient = null)
+    public function __construct(?ClientInterface $httpClient = null)
     {
         $this->httpClient = $httpClient;
     }

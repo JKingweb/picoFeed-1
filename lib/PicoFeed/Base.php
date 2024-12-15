@@ -36,7 +36,7 @@ abstract class Base
      * @param \PicoFeed\Config\Config $config Config class instance
      * @param ClientInterface $httpClient
      */
-    public function __construct(Config $config = null, ClientInterface $httpClient = null)
+    public function __construct(?Config $config = null, ?ClientInterface $httpClient = null)
     {
         $this->config = $config ?: new Config();
         $this->httpClient = $httpClient ?: new Client();
