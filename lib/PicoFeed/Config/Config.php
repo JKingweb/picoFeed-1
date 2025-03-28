@@ -8,6 +8,7 @@ namespace PicoFeed\Config;
  * @author  Frederic Guillot
  *
  * @method  Config setAdditionalCurlOptions(array $options)
+ * @method  Config setClientHeaders(array $headers)
  * @method  Config setClientTimeout(integer $value)
  * @method  Config setClientUserAgent(string $value)
  * @method  Config setMaxRedirections(integer $value)
@@ -35,6 +36,7 @@ namespace PicoFeed\Config;
  * @method  Config setFilterImageProxyUrl($value)
  * @method  Config setFilterImageProxyCallback($closure)
  * @method  Config setFilterImageProxyProtocol($value)
+ * @method  array      getClientHeaders()
  * @method  integer    getClientTimeout()
  * @method  string     getClientUserAgent()
  * @method  integer    getMaxRedirections()

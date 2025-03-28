@@ -187,7 +187,7 @@ class Client
         $opts = [
             'timeout' => $this->timeout,
             'allow_redirects' => ['max' => $this->max_redirects],
-            'headers' => ['User-Agent' => $this->user_agent],
+            'headers' => $this->request_headers + ['User-Agent' => $this->user_agent],
             'curl' => $this->additional_curl_options,
         ];
         if (strlen($this->last_modified)) {
@@ -240,7 +240,7 @@ class Client
      */
     public function setHeaders($headers)
     {
-        $this->request_headers = $headers;
+        $this->request_headers = $headers ?? [];
     }
 
     /**
@@ -671,6 +671,7 @@ class Client
     public function setConfig(Config $config)
     {
         if ($config !== null) {
+            $this->setHeaders($config->getClientHeaders());
             $this->setTimeout($config->getClientTimeout());
             $this->setUserAgent($config->getClientUserAgent());
             $this->setMaxRedirections($config->getMaxRedirections());
