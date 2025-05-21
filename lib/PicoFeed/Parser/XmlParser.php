@@ -123,6 +123,10 @@ class XmlParser
      */
     public static function htmlToXml($html)
     {
+        // NOTE: We wrap the input in a <p> tag if it has no starting tag, because libxml prior to 2.14 inserts one magically when parsing HTML
+        if ((trim($html)[0] ?? "<") !== "<") {
+            $html = "<p>$html</p>";
+        }
         $dom = self::getHtmlDocument('<?xml version="1.0" encoding="UTF-8">'.$html);
         return $dom->saveXML($dom->getElementsByTagName('body')->item(0));
     }
