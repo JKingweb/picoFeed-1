@@ -129,8 +129,9 @@ class Html
         xml_set_character_data_handler($parser, [$this, 'dataTag']);
         xml_parser_set_option($parser, XML_OPTION_CASE_FOLDING, false);
         xml_parse($parser, $this->input, true);
-        xml_parser_free($parser);
-
+        if (\PHP_MAJOR_VERSION < 8) {
+            xml_parser_free($parser);
+        }
         $this->postFilter();
 
         return $this->output;
