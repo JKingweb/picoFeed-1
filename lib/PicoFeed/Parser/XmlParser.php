@@ -85,32 +85,11 @@ class XmlParser
      */
     public static function getHtmlDocument($input)
     {
-        $dom = new DomDocument();
-
         if (empty($input)) {
-            return $dom;
+            return new DomDocument;
         }
 
-        self::$errors = [];
-        libxml_use_internal_errors(true);
-
-        if (version_compare(PHP_VERSION, '5.4.0', '>=')) {
-            $dom->loadHTML($input, LIBXML_NONET);
-        } else {
-            $dom->loadHTML($input);
-        }
-
-        foreach (libxml_get_errors() as $error) {
-            self::$errors[] = sprintf('XML error: %s (Line: %d - Column: %d - Code: %d)',
-                $error->message,
-                $error->line,
-                $error->column,
-                $error->code
-            );
-        }
-        libxml_use_internal_errors(false);
-
-        return $dom;
+        return \MensBeam\HTML\Parser::parse($input, null, null)->document;
     }
 
     /**

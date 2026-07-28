@@ -12,6 +12,11 @@
             "name": "Nicolas Bailly"
         }
     ],
+    "config": {
+        "platform": {
+            "php": "7.3.33"
+        }
+    },
     "require": {
         "php": ">=7.1",
         "ext-iconv": "*",
@@ -22,7 +27,8 @@
         "laminas/laminas-xml": "^1.0",
         "guzzlehttp/guzzle": "^6.0|^7.0",
         "kevinrob/guzzle-cache-middleware": "^2.1",
-        "psr/log": "^1.0"
+        "psr/log": "^1.0",
+        "mensbeam/html-parser": "^1.4"
     },
     "require-dev" : {
         "phpdocumentor/reflection-docblock": "2.0.4",
